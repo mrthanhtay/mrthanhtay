@@ -7,7 +7,7 @@ const MedicalRecord = new Schema(
   {
     namePatient: { type: String, minLength: 1, maxLength: 255 },
     sex: { type: String },
-    bithDay: Date,
+    bithDay: { type: String },
     address: { type: String },
     phone: { type: String },
     diagnose: { type: String },
