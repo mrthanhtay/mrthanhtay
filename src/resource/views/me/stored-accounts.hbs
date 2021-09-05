@@ -60,19 +60,19 @@
 </form>
 
 {{!-- xacs nhận xóa account --}}
-<div id="delete-account" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">XÓA KHÓA HỌC</h5>
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title">XÓA TÀI KHOẢN</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Bạn có chắc muốn xóa tài khoản {{accounts.name}} không???
+        Bạn có chắc muốn xóa tài khoản không???
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Hủy</button>
-        <button id="btn-delete-account" type="button" class="btn btn-danger" >Xóa Bỏ</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <button id="btn-delete-account" type="button" class="btn btn-primary btn-danger">Xóa</button>
       </div>
     </div>
   </div>
@@ -99,15 +99,11 @@
               e.preventDefault();
             }
         });
-
-
-        
         //khinhấn vào nút delete 
         btnDeleteAccount.onclick = function() {
           deleteForm.action = '/accounts/' +accountID+ '?_method=DELETE';
           deleteForm.submit();
         }
-
         // khi chọn tất cả được tick
         checkboxAll.change(function () {
           var isCheckedAll= $(this).prop('checked');
@@ -116,15 +112,12 @@
           }else accountItemCheckbox.prop('checked', false);
           renderCheckAllSubmibBtn();
         });
-
         //khi chọn một cái thì bỏ chọn tát cả
         accountItemCheckbox.change(function(){
           var isCheckedAll = accountItemCheckbox.length === $('input[name="accountIds[]"]:checked').length;
           checkboxAll.prop('checked', isCheckedAll);
           renderCheckAllSubmibBtn();
         })
-        
-
         //hiện lại nút thực hiện
         function renderCheckAllSubmibBtn(){
           var checkedCount = $('input[name="accountIds[]"]:checked').length;
