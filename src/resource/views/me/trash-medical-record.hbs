@@ -30,7 +30,7 @@
       <td>{{this.createdAt}}</td>
       <td>
           <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">khôi phục</a>
-          <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-account">Xóa Vĩnh Viễn</a>
+          <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-medical-record">Xóa Vĩnh Viễn</a>
       </td>
     </tr>
   </tbody>
@@ -57,7 +57,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Hủy</button>
-        <button id="btn-delete-account" type="button" class="btn btn-danger" >Xóa Bỏ</button>
+        <button id="btn-delete-medical-record" type="button" class="btn btn-danger" >Xóa Bỏ</button>
       </div>
     </div>
   </div>
@@ -71,26 +71,26 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() { 
-    var accountID; 
+    var medicalRecordID; 
     var deleteForm = document.forms['delete-form']; 
     var restoreForm = document.forms['restore-form']; 
-    var btnDeleteAccount = document.getElementById('btn-delete-account'); 
+    var btnDeleteMedicalRecord = document.getElementById('btn-delete-medical-record'); 
     var restoreBtn = $('.btn-restore') ;
 
-    $('#delete-account').on('show.bs.modal', function (event) {
+    $('#delete-medical-record').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); 
-        accountID = button.data('id'); 
+        medicalRecordID = button.data('id'); 
     }); 
   //khinhấn vào nút delete 
-  btnDeleteAccount.onclick = function() { 
-    deleteForm.action= '/accounts/' +accountID+ '/xoa-that?_method=DELETE'; 
+  btnDeleteMedicalRecord.onclick = function() { 
+    deleteForm.action= '/medicalRecord/' +medicalRecordID+ '/xoa-that?_method=DELETE'; 
     deleteForm.submit(); 
   }
   //khi nhấn vào nút khôi phục 
   restoreBtn.click(function (e){
     e.preventDefault(); 
-    var accountID= $(this).data('id'); 
-    restoreForm.action = '/accounts/' +accountID+ '/restore?_method=PATCH';
+    var medicalRecordID= $(this).data('id'); 
+    restoreForm.action = '/medicalRecord/' +medicalRecordID+ '/restore?_method=PATCH';
     restoreForm.submit(); })
   });
 </script>

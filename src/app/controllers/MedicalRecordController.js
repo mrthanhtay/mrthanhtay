@@ -25,11 +25,16 @@ class MedicalRecordController {
       .then(() => res.redirect('back'))
       .catch(next);
   }
+  restore(req, res, next) {
+    MedicalRecord.restore({ _id: req.params.id })
+      .then(() => res.redirect('back'))
+      .catch(next);
+  }
   //[POST]
   handFormAction(req, res, next) {
     switch(req.body.action){
       case 'delete': 
-          Account.delete({ _id: { $in: req.body.accountIds} })
+      MedicalRecord.delete({ _id: { $in: req.body.medicalRecordIds} })
           .then(() => res.redirect('back'))
           .catch(next);
           break;
