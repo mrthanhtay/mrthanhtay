@@ -46,7 +46,7 @@ class AccountController {
   //[PUT] accounts/:id
   update(req, res, next) {
     Account.updateOne({ _id: req.params.id }, req.body)
-      .then(() => res.redirect('/me/stored/account'))
+      .then(() => res.redirect('/me/stored/accounts'))
       .catch(next);
   }
   //[DELETE] accounts/:id

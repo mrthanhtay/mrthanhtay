@@ -3,19 +3,23 @@ const siteRouter = require('./site');
 const meRouter = require('./me');
 const accountsRouter = require('./accounts');
 const patientRouter = require('./accountPatient');
-const medicalrecordRouter = require('./medicalrecord');
+const medicalrecordRouter = require('./medicalRecord');
+
 function route(app) {
-  app.use('/news', newsRouter);
+    // app.use('/medicalRecord', createsMedicalRecord);
+    app.use('/news', newsRouter);
 
-  app.use('/me', meRouter);
+    app.use('/me', meRouter);
 
-  app.use('/accountPatient', patientRouter);
-  
-  app.use('/medicalRecord', medicalrecordRouter);
+    app.use('/accountPatient', patientRouter);
 
-  app.use('/accounts', accountsRouter);
+    app.use('/medicalRecord', medicalrecordRouter);
 
-  app.use('/', siteRouter);
+    app.use('/accountPatient', patientRouter);
+
+    app.use('/accounts', accountsRouter);
+
+    app.use('/', siteRouter);
 }
 
 module.exports = route;
