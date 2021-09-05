@@ -3,13 +3,17 @@ const siteRouter = require('./site');
 const meRouter = require('./me');
 const accountsRouter = require('./accounts');
 const patientRouter = require('./accountPatient');
-const createsMedicalRecord = require('./createsmedicalRecord');
+const medicalrecordRouter = require('./medicalRecord');
 
 function route(app) {
-    app.use('/medicalRecord', createsMedicalRecord);
+    // app.use('/medicalRecord', createsMedicalRecord);
     app.use('/news', newsRouter);
 
     app.use('/me', meRouter);
+
+    app.use('/accountPatient', patientRouter);
+
+    app.use('/medicalRecord', medicalrecordRouter);
 
     app.use('/accountPatient', patientRouter);
 
