@@ -13,6 +13,7 @@ const MedicalRecord = new Schema(
     diagnose: { type: String },
     prescription: { type: String },
     slug: { type: String, slug: 'name', unique: true },
+    note: { type: String }
   },
   {
     timestamps: true,

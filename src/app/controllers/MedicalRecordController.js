@@ -6,7 +6,14 @@ class MedicalRecordController {
     //[GET] /MedicalRecord/create
     create(req, res, next) {
             res.render('medicalRecords/create')
-        }
+    }
+    store(req, res, next) {
+        const medicalRecord = new MedicalRecord(req.body);
+        medicalRecord
+          .save()
+          .then(() => res.redirect('/medicalRecord'))
+          .catch((error) => {});
+      }
         //[POST] /medicalRecord/storeMedicalRecord
     storeMedicalRecord(req, res, next) {
             // res.json(req.body);
