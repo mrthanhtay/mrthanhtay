@@ -11,10 +11,12 @@ const MedicalRecord = new Schema({
     phone: { type: String },
     diagnose: { type: String },
     prescription: { type: String },
+    note: { type: String },
     slug: { type: String, slug: 'namePatient', unique: true },
 }, {
     timestamps: true,
 }, );
+
 //add plugin
 mongoose.plugin(slug);
 MedicalRecord.plugin(mongooseDelete, {
