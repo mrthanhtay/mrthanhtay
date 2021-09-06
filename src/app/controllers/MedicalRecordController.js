@@ -12,8 +12,8 @@ class MedicalRecordController {
 
             const medicalRecord = new MedicalRecord(req.body);
             medicalRecord.save();
-            // .then(res.redirect(" patch"))
-            res.send('MEDICAL-RECORD SAVED !');
+            // .then(res.redirect("medicalRecord/create"))
+            res.send('Medical-Record Saved !');
         }
         //[GET] /MedicalRecord/:id
     show(req, res, next) {
