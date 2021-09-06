@@ -16,14 +16,11 @@ class MedicalRecordController {
       }
         //[POST] /medicalRecord/storeMedicalRecord
     storeMedicalRecord(req, res, next) {
-            // res.json(req.body);
-            // MedicalRecord.create({ res.json(req.body) }, function(err, small) {
-            //     if (err) return handleError(err);
-            // })
+
             const medicalRecord = new MedicalRecord(req.body);
             medicalRecord.save();
-            // .then(res.redirect(" patch"))
-            res.send('MEDICAL-RECORD SAVED !');
+            // .then(res.redirect("medicalRecord/create"))
+            res.send('Medical-Record Saved !');
         }
         //[GET] /MedicalRecord/:id
     show(req, res, next) {
