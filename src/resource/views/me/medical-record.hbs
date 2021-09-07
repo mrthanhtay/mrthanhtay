@@ -1,4 +1,5 @@
-<form class="mt-4" name="container-form" method="POST" action="/accounts/handle-form-action">
+<div class="container">
+  <form class="mt-4" name="container-form" method="POST" action="/accounts/handle-form-action">
   <div>
     <h3 class="text-center">HỒ SƠ BỆNH ÁN</h3>
     <a href="/me/trash/medical-record">Thùng Rác ({{deleteCount}})</a>
@@ -43,7 +44,6 @@
       <td>{{this._id}}</td>
       <td>{{this.createdAt}}</td>
       <td>
-          <a href="/medicalRecord/{{this._id}}/edit" class="btn btn-link">Sửa</a>
           <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-medical-record">Xóa</a>
           <a href="/medicalRecord/{{this._id}}" class="btn btn-link">Xem</a>
       </td>
@@ -59,7 +59,7 @@
   {{/each}}
 </table>
 </form>
-
+</div>
 {{!-- xacs nhận xóa account --}}
 <div id="delete-medical-record" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
