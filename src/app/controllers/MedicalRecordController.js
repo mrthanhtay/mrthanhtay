@@ -3,17 +3,27 @@ const { mutileMongooseToObject } = require('../../util/mongoose');
 const { mongooseToObject } = require('../../util/mongoose');
 
 class MedicalRecordController {
-    //[GET] /MedicalRecord/create
+    // [GET] / MedicalRecord / create
+    // create(req, res, next) {
+    //         res.render('medicalRecords/create');
+    //     }
+    //create update function
     create(req, res, next) {
-            res.render('medicalRecords/create')
+        MedicalRecord.findById(req.params.id)
+            .then((medicalrecords) => {
+                res.render('medicalRecords/create', {
+                    medicalrecords: mongooseToObject(medicalrecords),
+                });
+            })
+            .catch(next);
     }
     store(req, res, next) {
-        const medicalRecord = new MedicalRecord(req.body);
-        medicalRecord
-          .save()
-          .then(() => res.redirect('/medicalRecord'))
-          .catch((error) => {});
-      }
+            const medicalRecord = new MedicalRecord(req.body);
+            medicalRecord
+                .save()
+                .then(() => res.redirect('/medicalRecord'))
+                .catch((error) => {});
+        }
         //[POST] /medicalRecord/storeMedicalRecord
     storeMedicalRecord(req, res, next) {
 
