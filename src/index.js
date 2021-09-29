@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
+const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const methodOverride = require('method-override');
 const path = require('path');
 const port = 3000;
-
+app.use(cookieParser())
 const route = require('./routes');
 const db = require('./config/db');
 

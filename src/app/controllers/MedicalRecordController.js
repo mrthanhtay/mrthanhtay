@@ -16,6 +16,8 @@ class MedicalRecordController {
                 });
             })
             .catch(next);
+
+
     }
     store(req, res, next) {
             const medicalRecord = new MedicalRecord(req.body);

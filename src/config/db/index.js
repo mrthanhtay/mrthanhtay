@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
-
+const MONGO_URI = 'mongodb://localhost:27017/online_clinic';
 async function connect() {
-  try {
-    await mongoose.connect('mongodb://localhost:27017/online_clinic', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-      useCreateIndex: true,
-    });
-    console.log('ket noi thanh cong');
-  } catch (error) {
-    console.log('Loi!!!!');
-  }
+    try {
+        await mongoose.connect(MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useFindAndModify: false,
+            useCreateIndex: true,
+        });
+        console.log('ket noi thanh cong');
+    } catch (error) {
+        console.log('Loi!!!!');
+    }
 }
 
 module.exports = { connect };

@@ -8,6 +8,11 @@ class PatientController {
 
     login(req, res) {
         res.render('accountPatient/login');
+        // Cookies that have not been signed
+        console.log('Cookies: ', req.cookies);
+
+        // Cookies that have been signed
+        console.log('Signed Cookies: ', req.signedCookies);
     }
 
     //[Get] accountPatient/sginin
