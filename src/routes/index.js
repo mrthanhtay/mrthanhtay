@@ -8,7 +8,7 @@ const medicalrecordRouter = require('./medicalRecord');
 function route(app) {
     // app.use('/medicalRecord', createsMedicalRecord);
     app.use('/news', newsRouter);
-
+    app.use('/google', patientRouter)
     app.use('/me', meRouter);
 
     app.use('/accountPatient', patientRouter);
