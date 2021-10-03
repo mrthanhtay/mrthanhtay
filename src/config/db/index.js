@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const MONGO_URI = 'mongodb://localhost:27017/online_clinic';
+// const MONGO_URI = '';
 async function connect() {
     try {
         await mongoose.connect(MONGO_URI, {
