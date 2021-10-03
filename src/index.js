@@ -6,17 +6,18 @@ const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const methodOverride = require('method-override');
 const cookieSession = require('cookie-session');
-require('/passport');
+require('./passport.js');
 const path = require('path');
 
 //test db
-const accountPatient = require('./app/models/AccountPatient');
-const { mongooseToObject } = require('./util/mongoose');
+// const accountPatient = require('./app/models/AccountPatient');
+// const { mongooseToObject } = require('./util/mongoose');
 
 
 
 //testdata
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
+const port = 3000;
 
 app.use(cookieParser())
 const route = require('./routes');
