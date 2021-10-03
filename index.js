@@ -16,7 +16,7 @@ const { mongooseToObject } = require('./util/mongoose');
 
 
 //testdata
-const port = 3000;
+const port = 'my-project-project-capstone.vercel.app';
 app.use(cookieParser())
 const route = require('./routes');
 const db = require('./config/db');
