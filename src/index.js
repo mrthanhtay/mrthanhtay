@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const methodOverride = require('method-override');
 const cookieSession = require('cookie-session');
-require('./passport.js');
+require('src/passport.js');
 const path = require('path');
 
 //test db
