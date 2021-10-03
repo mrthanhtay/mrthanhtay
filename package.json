@@ -10,7 +10,7 @@
     "scripts": {
         "beautiful": "prettier --single-quote --trailing-comma all --write src/**/*.{js,json,scss,hbs}",
         "dev": "nodemon --inspect src/index.js",
-        "start": "node src/index.js",
+        "start": "node --inspect src/index.js",
         "watch": "node-sass -w src/resource/scss/app.scss src/public/css/app.css",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
