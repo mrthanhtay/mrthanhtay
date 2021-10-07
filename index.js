@@ -56,6 +56,10 @@ app.get('/logout', (req, res) => {
         req.logout();
         res.redirect('/after-logout');
     })
+    //test deploy web
+app.get('/', (req, res) => {
+        res.send('app deploy successful!');
+    })
     //webRTC
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
