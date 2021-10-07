@@ -21,7 +21,7 @@ const path = require('path');
 
 const port = process.env.port || 3000;
 app.use(cookieParser())
-const route = require('./src/routes');
+const route = require('./src/routes/index');
 const db = require('./src/config/db');
 
 
@@ -130,19 +130,18 @@ app.engine(
         },
     }),
 );
+const site = require('./src/routes/site')
 app.set('view engine', 'hbs');
 
 app.set('views', path.join(__dirname, 'resource', 'views'));
 
 //route init khoi tao tuyen duong
 // test deploy web
-app.get('/', (req, res) => {
-    res.send('App deployed successfull !!!!');
-});
-app.get('/home', (req, res) => {
-        res.render('/src/resource/views/home')
-    })
-    // route(app);
+app.get('/', route);
+// app.get('/home', (req, res) => {
+//         res.render('/src/resource/views/search');
+//     })
+// route(app);
 
 server.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
