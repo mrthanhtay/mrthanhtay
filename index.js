@@ -137,12 +137,14 @@ app.set('views', path.join(__dirname, 'resource', 'views'));
 
 //route init khoi tao tuyen duong
 // test deploy web
-app.get('/', site);
+app.get('/', (req, res) => {
+    res.send('Deploy success !!!');
+});
 
 // app.get('/home', (req, res) => {
 //         res.render('/src/resource/views/search');
 //     })
-// route(app);
+route(app);
 
 server.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
