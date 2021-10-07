@@ -137,7 +137,8 @@ app.set('views', path.join(__dirname, 'resource', 'views'));
 
 //route init khoi tao tuyen duong
 // test deploy web
-app.get('/', route);
+// app.get('/', route);
+route(app);
 // app.get('/home', (req, res) => {
 //         res.render('/src/resource/views/search');
 //     })
