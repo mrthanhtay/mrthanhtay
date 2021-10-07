@@ -58,12 +58,12 @@ app.get('/logout', (req, res) => {
     })
     //test deploy web
 app.get('/', (req, res) => {
-    res.send('app deploy successful!');
-})
-app.get('/home', (req, res) => {
-    res.render('home');
-});
-//webRTC
+        route(app);
+    })
+    // app.get('/home', (req, res) => {
+    //     res.render();
+    // });
+    //webRTC
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const { ExpressPeerServer } = require('peer');
