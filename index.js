@@ -16,10 +16,18 @@ const path = require('path');
 
 
 //testdata
-const port = 3000;
+
+
+
+const port = process.env.port || 3000;
 app.use(cookieParser())
 const route = require('./src/routes');
 const db = require('./src/config/db');
+
+
+
+
+
 //auth google login
 app.use(cookieSession({
     name: 'tuto-session',
@@ -57,9 +65,9 @@ app.get('/logout', (req, res) => {
         res.redirect('/after-logout');
     })
     //test deploy web
-app.get('/', (req, res) => {
-        route(app);
-    })
+    // app.get('/', (req, res) => {
+    //         route(app);
+    //     })
     // app.get('/home', (req, res) => {
     //     res.render();
     // });
