@@ -130,15 +130,15 @@ app.engine(
         },
     }),
 );
-const site = require('./src/routes/index');
+const site = require('./src/routes/site');
 app.set('view engine', 'hbs');
 
 app.set('views', path.join(__dirname, 'resource', 'views'));
 
 //route init khoi tao tuyen duong
 // test deploy web
-// app.get('/', route);
-route(app);
+app.get('/', site);
+
 // app.get('/home', (req, res) => {
 //         res.render('/src/resource/views/search');
 //     })
