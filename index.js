@@ -130,7 +130,7 @@ app.engine(
         },
     }),
 );
-const site = require('./src/routes/site')
+const site = require('./src/routes/index');
 app.set('view engine', 'hbs');
 
 app.set('views', path.join(__dirname, 'resource', 'views'));
