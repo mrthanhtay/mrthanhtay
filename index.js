@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const methodOverride = require('method-override');
 const cookieSession = require('cookie-session');
-require('./src/passport.js');
+require('./src/passport');
 const path = require('path');
 
 //test db
@@ -14,60 +14,53 @@ const path = require('path');
 // const { mongooseToObject } = require('./util/mongoose');
 
 
-
-//testdata
-
-
-
 const port = process.env.port || 3000;
 app.use(cookieParser())
-const route = require('./src/routes/index');
+const route = require('./src/routes');
 const db = require('./src/config/db');
 
 
 
 
 
-//auth google login
-app.use(cookieSession({
-    name: 'tuto-session',
-    keys: ['key1', 'key2']
-}))
-const isLoggedIn = (req, res, next) => {
-    if (req.user) {
-        next();
-    } else {
-        res.sendStatus(401);
-    }
-}
-app.use(passport.initialize());
-app.use(passport.session());
+// //auth google login
+// app.use(cookieSession({
+//     name: 'tuto-session',
+//     keys: ['key1', 'key2']
+// }))
+// const isLoggedIn = (req, res, next) => {
+//     if (req.user) {
+//         next();
+//     } else {
+//         res.sendStatus(401);
+//     }
+// }
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-app.get('/after-logout', (req, res) => res.send('sau khi logout ban lam gi'));
+// app.get('/after-logout', (req, res) => res.send('sau khi logout ban lam gi'));
 
-app.get('/fail', (req, res) => res.send('dang nhap that bai thi lam gi!!!'));
-app.get('/success', isLoggedIn, (req, res) => res.send(`dang nhap thanh cong mr ${req.user.displayName} !!! gio thi lam gi`));
+// app.get('/fail', (req, res) => res.send('dang nhap that bai thi lam gi!!!'));
+// app.get('/success', isLoggedIn, (req, res) => res.send(`dang nhap thanh cong mr ${req.user.displayName} !!! gio thi lam gi`));
 
-app.get('/google',
-    passport.authenticate('google', { scope: ['profile', ['email']] }));
-app.get('/google/callback',
-    passport.authenticate('google', { failureRedirect: '/fail' }),
-    function(req, res) {
-        var name = req.user.displayName;
-        // Successful authentication, redirect home.
-        res.redirect('/');
-    });
+// app.get('/google',
+//     passport.authenticate('google', { scope: ['profile', ['email']] }));
+// app.get('/google/callback',
+//     passport.authenticate('google', { failureRedirect: '/fail' }),
+//     function(req, res) {
+//         var name = req.user.displayName;
+//         // Successful authentication, redirect home.
+//         res.redirect('/');
+//     });
 
-app.get('/logout', (req, res) => {
+// app.get('/logout', (req, res) => {
 
-    req.session = null;
-    req.logout();
-    res.redirect('/after-logout');
-})
+//     req.session = null;
+//     req.logout();
+//     res.redirect('/after-logout');
+// })
 
-// app.get('/home', (req, res) => {
-//     res.render();
-// });
+
 //webRTC
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
@@ -136,14 +129,7 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resource', 'views'));
 
 //route init khoi tao tuyen duong
-// test deploy web
-app.get('/', (req, res) => {
-    res.send('Deploy success !!!');
-});
 
-// app.get('/home', (req, res) => {
-//         res.render('/src/resource/views/search');
-//     })
 route(app);
 
 server.listen(port, () => {
