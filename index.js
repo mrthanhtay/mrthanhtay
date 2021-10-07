@@ -129,9 +129,13 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resource', 'views'));
 
 //route init khoi tao tuyen duong
-
 route(app);
 
 server.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
 });
+
+//test deployed
+app.get('/deploy', (req, res) => {
+    res.send('deploy success')
+})
