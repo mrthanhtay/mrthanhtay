@@ -137,10 +137,10 @@ app.set('views', path.join(__dirname, 'resource', 'views'));
 //route init khoi tao tuyen duong
 // test deploy web
 app.get('/', (req, res) => {
-    res.send('App deployed successfull !!!');
+    res.send('App deployed successfull !!!!');
 });
 app.get('/home', (req, res) => {
-        res.render('src/resource/views/home')
+        res.render('/src/resource/views/home')
     })
     // route(app);
 
