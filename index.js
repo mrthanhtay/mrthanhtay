@@ -60,18 +60,15 @@ app.get('/google/callback',
 
 app.get('/logout', (req, res) => {
 
-        req.session = null;
-        req.logout();
-        res.redirect('/after-logout');
-    })
-    //test deploy web
-    // app.get('/', (req, res) => {
-    //         route(app);
-    //     })
-    // app.get('/home', (req, res) => {
-    //     res.render();
-    // });
-    //webRTC
+    req.session = null;
+    req.logout();
+    res.redirect('/after-logout');
+})
+
+// app.get('/home', (req, res) => {
+//     res.render();
+// });
+//webRTC
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const { ExpressPeerServer } = require('peer');
@@ -138,7 +135,14 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resource', 'views'));
 
 //route init khoi tao tuyen duong
-route(app);
+// test deploy web
+app.get('/', (req, res) => {
+    res.send('App deployed successfull !!!');
+});
+app.get('/home', (req, res) => {
+        res.render('src/resource/views/home')
+    })
+    // route(app);
 
 server.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
