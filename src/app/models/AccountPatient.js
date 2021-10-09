@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const accounts_patient = new Schema({
     googleId: { type: String, required: true },
     gmail: { type: String, required: true },
-    name: { type: String, required: true },
+    name: { type: String, required: true }
+
 }, {
     timestamps: true
 });

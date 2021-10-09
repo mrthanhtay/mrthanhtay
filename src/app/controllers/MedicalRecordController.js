@@ -9,7 +9,8 @@ class MedicalRecordController {
     //     }
     //create update function
     create(req, res, next) {
-        MedicalRecord.findById(req.params.id)
+        // const medicalrecords = MedicalRecord.findOne({ namePatient: `${req.user.displayName}` });
+        MedicalRecord.findOne({ namePatient: `${req.user.displayName}` })
             .then((medicalrecords) => {
                 res.render('medicalRecords/create', {
                     medicalrecords: mongooseToObject(medicalrecords),
@@ -28,7 +29,6 @@ class MedicalRecordController {
         }
         //[POST] /medicalRecord/storeMedicalRecord
     storeMedicalRecord(req, res, next) {
-
             const medicalRecord = new MedicalRecord(req.body);
             medicalRecord.save();
             // .then(res.redirect("medicalRecord/create"))

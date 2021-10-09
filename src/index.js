@@ -10,8 +10,8 @@ require('./passport.js');
 const path = require('path');
 
 //test db
-// const accountPatient = require('./app/models/AccountPatient');
-// const { mongooseToObject } = require('./util/mongoose');
+const accountsPatient = require('./app/models/AccountPatient');
+const { mongooseToObject } = require('./util/mongoose');
 
 
 
@@ -47,8 +47,12 @@ app.get('/google',
 app.get('/google/callback',
     passport.authenticate('google', { failureRedirect: '/fail' }),
     function(req, res) {
-        var name = req.user.displayName;
-        // Successful authentication, redirect home.
+        const account_Patient = new accountsPatient({
+                GoogleId: req.user.Id,
+                gmail: req.user.emails[0].value,
+                name: req.user.displayName,
+            })
+            // Successful authentication, redirect home.
         res.redirect('/');
     });
 
